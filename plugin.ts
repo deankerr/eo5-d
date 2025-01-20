@@ -1,11 +1,4 @@
-import type { Logger } from '@logtape/logtape'
-import type { Core } from './core.ts'
-import type { IRCService } from './irc.ts'
-
-type Services = {
-  irc: IRCService
-  logger: Logger
-}
+import type { Core, Services } from './core.ts'
 
 export interface Plugin {
   name: string

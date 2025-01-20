@@ -1,6 +1,6 @@
 import { newQueue, Queue } from 'jsr:@henrygd/queue'
 import type { Services } from '../core.ts'
-import type { IRCMessageEvent } from '../irc.ts'
+import type { IRCMessageEvent } from '../services/irc.ts'
 import { createPlugin } from '../plugin.ts'
 
 const key = Deno.env.get('WEATHER_API_KEY')
@@ -66,7 +66,7 @@ const weatherPlugin = createPlugin('weather')({
     }
 
     const queue = newQueue(1)
-    const handler = createCommandHandler(services, queue, '!wea')
+    const handler = createCommandHandler(services, queue, '@weather')
 
     irc.client.on('privmsg:channel', handler)
   },

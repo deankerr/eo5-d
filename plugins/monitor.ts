@@ -2,6 +2,22 @@ import { createPlugin } from '../plugin.ts'
 
 const monitorPlugin = createPlugin('monitor')({
   load: ({ irc, logger: log }) => {
+    irc.client.on('connected', (payload) => {
+      log.info`connected: ${payload}`
+    })
+
+    irc.client.on('connecting', (payload) => {
+      log.info`connecting: ${payload}`
+    })
+
+    irc.client.on('disconnected', (payload) => {
+      log.info`disconnected: ${payload}`
+    })
+
+    irc.client.on('reconnecting', (payload) => {
+      log.info`reconnecting: ${payload}`
+    })
+
     irc.client.on('register', ({ source, params }) => {
       log.info`registered: ${params.nick} on ${source?.name}`
     })
