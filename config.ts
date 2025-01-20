@@ -7,6 +7,7 @@ const irc = {
   client: {
     nick: Deno.env.get('IRC_NICK')!,
     username: Deno.env.get('IRC_USERNAME'),
+    password: Deno.env.get('IRC_PASSWORD'),
     realname: Deno.env.get('IRC_REALNAME'),
     channels: Deno.env.get('IRC_CHANNELS')?.split(',') as ClientOptions['channels'] | undefined,
     pingTimeout: false,
