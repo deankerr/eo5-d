@@ -36,7 +36,7 @@ export class Core {
   }
 
   connect() {
-    const { hostname } = this.options.irc
-    this.irc.client.connect(hostname)
+    const { hostname, port } = this.options.irc
+    this.irc.client.connect(hostname, port)
   }
 }

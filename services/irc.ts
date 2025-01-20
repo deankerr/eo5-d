@@ -6,6 +6,7 @@ export class IRCService {
 
   constructor(config: ClientOptions) {
     this._client = new Client(config)
+    this._client.on('error', (data) => console.error('[error]', data))
 
     // Create a proxy to intercept all client method calls
     this.proxy = new Proxy(this._client, {
@@ -20,8 +21,6 @@ export class IRCService {
         }
       },
     })
-
-    this.proxy.on('error', (data) => console.error('[error]', data))
   }
 
   get client() {

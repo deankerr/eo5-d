@@ -2,13 +2,15 @@ import type { ClientOptions } from '@irc/client'
 
 const irc = {
   hostname: Deno.env.get('IRC_HOSTNAME')!,
+  port: Number(Deno.env.get('IRC_PORT')!) || 6667,
+
   client: {
     nick: Deno.env.get('IRC_NICK')!,
     username: Deno.env.get('IRC_USERNAME'),
     realname: Deno.env.get('IRC_REALNAME'),
     channels: Deno.env.get('IRC_CHANNELS')?.split(',') as ClientOptions['channels'] | undefined,
     pingTimeout: false,
-    verbose: 'raw',
+    verbose: Deno.env.get('DEBUG') ? 'raw' : undefined,
   } satisfies ClientOptions,
 }
 
