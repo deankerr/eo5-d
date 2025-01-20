@@ -11,6 +11,7 @@ const irc = {
     realname: Deno.env.get('IRC_REALNAME'),
     channels: Deno.env.get('IRC_CHANNELS')?.split(',') as ClientOptions['channels'] | undefined,
     pingTimeout: false,
+    authMethod: Deno.env.get('IRC_SASL') ? 'sasl' : undefined,
     verbose: Deno.env.get('DEBUG') ? 'raw' : undefined,
   } satisfies ClientOptions,
 }
